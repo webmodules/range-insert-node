@@ -1,0 +1,31 @@
+{
+  "name": "range-insert-node",
+  "version": "0.0.0",
+  "description": "Cross-browser polyfill for `Range#insertNode()`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/webmodules/range-insert-node.git"
+  },
+  "keywords": [
+    "dom",
+    "range",
+    "insertNode",
+    "insert",
+    "node",
+    "polyfill",
+    "browser"
+  ],
+  "author": "Nathan Rajlich <nathan@tootallnate.net> (http://n8.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webmodules/range-insert-node/issues"
+  },
+  "homepage": "https://github.com/webmodules/range-insert-node",
+  "dependencies": {
+    "debug": "~1.0.4"
+  }
+}
