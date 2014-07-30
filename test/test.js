@@ -91,4 +91,21 @@ describe('range-insert-node', function () {
     assert.equal('test', div.firstChild.childNodes[2].nodeValue);
   });
 
+  it('should insert an empty DocumentFragment into a Range', function () {
+    var div = document.createElement('div');
+    div.innerHTML = '<i>test</i>';
+
+    // set up the Range
+    var range = document.createRange();
+    range.setStart(div.firstChild.firstChild, 2);
+    range.setEnd(div.firstChild.firstChild, 2);
+
+    // create empty DocumentFragment
+    var fragment = document.createDocumentFragment();
+
+    insertNode(range, fragment);
+
+    assert.equal('<i>test</i>', div.innerHTML);
+  });
+
 });

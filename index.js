@@ -37,6 +37,7 @@ function isEmptyTextNode (node) {
  */
 
 function insertNode (range, node) {
+  var child;
   var isDocumentFragment = node.nodeType === 11; /* Node.DOCUMENT_FRAGMENT_NODE */
   var left = isDocumentFragment ? node.firstChild : node;
   var right = isDocumentFragment ? node.lastChild : node;
@@ -44,17 +45,21 @@ function insertNode (range, node) {
   var rtn = range.insertNode(node);
 
   // check right-hand side child node
-  var child = right.nextSibling;
-  if (isEmptyTextNode(child)) {
-    debug('removing `nextSibling` empty TextNode');
-    child.parentNode.removeChild(child);
+  if (right) {
+    child = right.nextSibling;
+    if (isEmptyTextNode(child)) {
+      debug('removing `nextSibling` empty TextNode');
+      child.parentNode.removeChild(child);
+    }
   }
 
   // check left-hand side child node
-  child = left.previousSibling;
-  if (isEmptyTextNode(child)) {
-    debug('removing `previousSibling` empty TextNode');
-    child.parentNode.removeChild(child);
+  if (left) {
+    child = left.previousSibling;
+    if (isEmptyTextNode(child)) {
+      debug('removing `previousSibling` empty TextNode');
+      child.parentNode.removeChild(child);
+    }
   }
 
   return rtn;
