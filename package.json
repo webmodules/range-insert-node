@@ -4,7 +4,7 @@
   "description": "Cross-browser polyfill for `Range#insertNode()`",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,8 @@
   "homepage": "https://github.com/webmodules/range-insert-node",
   "dependencies": {
     "debug": "~1.0.4"
+  },
+  "devDependencies": {
+    "zuul": "~1.10.2"
   }
 }
