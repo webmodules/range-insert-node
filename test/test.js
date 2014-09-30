@@ -108,4 +108,20 @@ describe('range-insert-node', function () {
     assert.equal('<i>test</i>', div.innerHTML);
   });
 
+  it('should insert a DocumentFragment into a Range with lingering DOM elements', function () {
+    var div = document.createElement('div');
+    div.innerHTML = '<p><strong><em>fo</em></strong>obar</p>';
+
+    // set up the Range
+    var range = document.createRange();
+    range.setStart(div.firstChild.firstChild.firstChild.firstChild, 0);
+    range.setEnd(div.firstChild.lastChild, 4);
+
+    var fragment = range.extractContents();
+
+    insertNode(range, fragment);
+
+    assert.equal('<p><strong><em>fo</em></strong>obar</p>', div.innerHTML);
+  });
+
 });

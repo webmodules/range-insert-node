@@ -27,6 +27,25 @@ function isEmptyTextNode (node) {
 }
 
 /**
+ * Returns `true` if `node` is an Element with no child nodes, an empty text node,
+ * or other empty Elements.
+ *
+ * @param {Node} node - DOM node to check
+ * @return {Boolean}
+ * @private
+ */
+
+function isEmptyElement (node) {
+  return node &&
+    node.nodeType === 1 /* Node.ELEMENT_NODE */ &&
+    (node.childNodes.length === 0 ||
+     (node.childNodes.length === 1 &&
+      (isEmptyTextNode(node.firstChild) || isEmptyElement(node.firstChild))
+     )
+    );
+}
+
+/**
  * Cross-browser polyfill for `Range#insertNode()`.
  * Leverages the native `insertNode()` function, but does some additional
  * cleanup logic afterwards to remove residual empty TextNodes.
@@ -50,6 +69,9 @@ function insertNode (range, node) {
     if (isEmptyTextNode(child)) {
       debug('removing `nextSibling` empty TextNode');
       child.parentNode.removeChild(child);
+    } else if (isEmptyElement(child)) {
+      debug('removing `nextSibling` empty Element');
+      child.parentNode.removeChild(child);
     }
   }
 
@@ -58,6 +80,9 @@ function insertNode (range, node) {
     child = left.previousSibling;
     if (isEmptyTextNode(child)) {
       debug('removing `previousSibling` empty TextNode');
+      child.parentNode.removeChild(child);
+    } else if (isEmptyElement(child)) {
+      debug('removing `previousSibling` empty Element');
       child.parentNode.removeChild(child);
     }
   }
