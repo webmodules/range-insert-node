@@ -3,10 +3,20 @@ var assert = require('assert');
 var insertNode = require('../');
 
 describe('range-insert-node', function () {
+  var div;
+
+  afterEach(function () {
+    if (div) {
+      // clean up...
+      document.body.removeChild(div);
+      div = null;
+    }
+  });
 
   it('should insert a <b> element into a Range', function () {
-    var div = document.createElement('div');
+    div = document.createElement('div');
     div.innerHTML = '<i>hello</i>';
+    document.body.appendChild(div);
 
     // set up the Range
     var range = document.createRange();
@@ -22,8 +32,9 @@ describe('range-insert-node', function () {
   });
 
   it('should insert a <b> element into a Range (left-boundary)', function () {
-    var div = document.createElement('div');
+    div = document.createElement('div');
     div.innerHTML = '<i>hello</i>';
+    document.body.appendChild(div);
 
     // set up the Range
     var range = document.createRange();
@@ -43,8 +54,9 @@ describe('range-insert-node', function () {
   });
 
   it('should insert a <b> element into a Range (right-boundary)', function () {
-    var div = document.createElement('div');
+    div = document.createElement('div');
     div.innerHTML = '<i>hello</i>';
+    document.body.appendChild(div);
 
     // set up the Range
     var range = document.createRange();
@@ -64,8 +76,9 @@ describe('range-insert-node', function () {
   });
 
   it('should insert a DocumentFragment into a Range', function () {
-    var div = document.createElement('div');
+    div = document.createElement('div');
     div.innerHTML = '<i>test</i>';
+    document.body.appendChild(div);
 
     // set up the Range
     var range = document.createRange();
@@ -92,8 +105,9 @@ describe('range-insert-node', function () {
   });
 
   it('should insert an empty DocumentFragment into a Range', function () {
-    var div = document.createElement('div');
+    div = document.createElement('div');
     div.innerHTML = '<i>test</i>';
+    document.body.appendChild(div);
 
     // set up the Range
     var range = document.createRange();
@@ -109,8 +123,9 @@ describe('range-insert-node', function () {
   });
 
   it('should insert a DocumentFragment into a Range with lingering DOM elements', function () {
-    var div = document.createElement('div');
+    div = document.createElement('div');
     div.innerHTML = '<p><strong><em>fo</em></strong>obar</p>';
+    document.body.appendChild(div);
 
     // set up the Range
     var range = document.createRange();
