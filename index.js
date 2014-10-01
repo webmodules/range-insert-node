@@ -66,24 +66,28 @@ function insertNode (range, node) {
   // check right-hand side child node
   if (right) {
     child = right.nextSibling;
-    if (isEmptyTextNode(child)) {
-      debug('removing `nextSibling` empty TextNode');
-      child.parentNode.removeChild(child);
-    } else if (isEmptyElement(child)) {
-      debug('removing `nextSibling` empty Element');
-      child.parentNode.removeChild(child);
+    if (child) {
+      if (child.nodeType === 3 /* Node.TEXT_NODE */ && isEmptyTextNode(child)) {
+        debug('removing right-hand side `nextSibling` empty TextNode');
+        child.parentNode.removeChild(child);
+      } else if (child.nodeType === 1 /* Node.ELEMENT_NODE */ && child.nodeName === right.nodeName && isEmptyElement(child)) {
+        debug('removing right-hand side `nextSibling` empty Element %o', child);
+        child.parentNode.removeChild(child);
+      }
     }
   }
 
   // check left-hand side child node
   if (left) {
     child = left.previousSibling;
-    if (isEmptyTextNode(child)) {
-      debug('removing `previousSibling` empty TextNode');
-      child.parentNode.removeChild(child);
-    } else if (isEmptyElement(child)) {
-      debug('removing `previousSibling` empty Element');
-      child.parentNode.removeChild(child);
+    if (child) {
+      if (child.nodeType === 3 /* Node.TEXT_NODE */ && isEmptyTextNode(child)) {
+        debug('removing left-hand side `previousSibling` empty TextNode');
+        child.parentNode.removeChild(child);
+      } else if (child.nodeType === 1 /* Node.ELEMENT_NODE */ && child.nodeName === left.nodeName && isEmptyElement(child)) {
+        debug('removing left-hand side `previousSibling` empty Element %o', child);
+        child.parentNode.removeChild(child);
+      }
     }
   }
 

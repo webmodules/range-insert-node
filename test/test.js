@@ -139,4 +139,21 @@ describe('range-insert-node', function () {
     assert.equal('<p><strong><em>fo</em></strong>obar</p>', div.innerHTML);
   });
 
+  it('should *not* remove a lingering DOM node that is not within selection', function () {
+    div = document.createElement('div');
+    div.innerHTML = '<p><span></span><b>test</b><span></span></p>';
+    document.body.appendChild(div);
+
+    // set up the Range
+    var range = document.createRange();
+    range.setStart(div.firstChild, 1);
+    range.setEnd(div.firstChild, 2);
+
+    var fragment = range.extractContents();
+
+    insertNode(range, fragment.firstChild.firstChild);
+
+    assert.equal('<p><span></span>test<span></span></p>', div.innerHTML);
+  });
+
 });
