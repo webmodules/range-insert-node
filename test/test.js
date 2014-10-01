@@ -13,7 +13,7 @@ describe('range-insert-node', function () {
     }
   });
 
-  it('should insert a <b> element into a Range', function () {
+  it('should insert a B element into a Range', function () {
     div = document.createElement('div');
     div.innerHTML = '<i>hello</i>';
     document.body.appendChild(div);
@@ -31,7 +31,7 @@ describe('range-insert-node', function () {
     assert.equal('<i>h<b>test</b>ello</i>', div.innerHTML);
   });
 
-  it('should insert a <b> element into a Range (left-boundary)', function () {
+  it('should insert a B element into a Range (left-boundary)', function () {
     div = document.createElement('div');
     div.innerHTML = '<i>hello</i>';
     document.body.appendChild(div);
@@ -53,7 +53,7 @@ describe('range-insert-node', function () {
     assert.equal('hello', div.firstChild.childNodes[1].nodeValue);
   });
 
-  it('should insert a <b> element into a Range (right-boundary)', function () {
+  it('should insert a B element into a Range (right-boundary)', function () {
     div = document.createElement('div');
     div.innerHTML = '<i>hello</i>';
     document.body.appendChild(div);
