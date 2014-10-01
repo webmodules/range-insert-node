@@ -1,6 +1,6 @@
 {
   "name": "range-insert-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cross-browser polyfill for `Range#insertNode()`",
   "main": "index.js",
   "scripts": {

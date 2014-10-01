@@ -1,4 +1,11 @@
 
+1.0.1 / 2014-10-01
+==================
+
+ * index: don't remove empty elements if they're not the same nodeName as the node being passed in
+ * test: don't use HTML in the test names
+ * test: add the test DIVs to the DOM
+
 1.0.0 / 2014-09-30
 ==================
 
