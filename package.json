@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/webmodules/range-insert-node",
   "dependencies": {
-    "debug": "~1.0.4"
+    "debug": "~2.0.0"
   },
   "devDependencies": {
     "zuul": "~1.10.2"
