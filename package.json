@@ -29,6 +29,6 @@
     "debug": "~2.0.0"
   },
   "devDependencies": {
-    "zuul": "~1.10.2"
+    "zuul": "~1.11.0"
   }
 }
